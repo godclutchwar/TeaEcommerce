@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mana Desi-licious Home Foods - Menu Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #061810;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #e8d4a0;
+  }
+  .poster {
+    width: 800px;
+    background: linear-gradient(180deg, #0d2b1a 0%, #061810 100%);
+    border: 4px solid #8b6914;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  }
+  /* Border accents */
+  .poster::before {
+    content: ''; position: absolute; inset: 8px;
+    border: 1px solid rgba(180, 140, 40, 0.3); pointer-events: none;
+  }
+  header { text-align: center; margin-bottom: 30px; }
+  .brand {
+    font-family: 'Cinzel', serif; font-size: 60px; font-weight: 700;
+    background: linear-gradient(to bottom, #f5d97a, #c9941a);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 8px;
+  }
+  .tagline { color: #c8a840; font-size: 14px; letter-spacing: 4px; text-transform: uppercase; margin-top: -10px; }
+  .motto { font-style: italic; font-size: 18px; color: #d4a840; margin-top: 10px; }
+
+  /* Grid Layout */
+  .menu-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 20px; }
+  .section { margin-bottom: 25px; }
+  .category-pill {
+    background: linear-gradient(90deg, #e8d4a0 0%, #c9941a 100%);
+    color: #061810; padding: 4px 12px; border-radius: 15px;
+    display: inline-block; margin-bottom: 12px; width: 100%; text-align: center;
+  }
+  .category-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; text-transform: uppercase; }
+  .qty { font-size: 10px; display: block; opacity: 0.8; }
+
+  /* Item Styles - Fixed Alignment */
+  .item {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 4px; border-bottom: 1px dotted rgba(180, 140, 40, 0.2);
+    padding-bottom: 2px;
+  }
+  .item-name { font-size: 15px; font-weight: 400; padding-right: 10px; }
+  .price { font-family: 'Cinzel', serif; font-size: 13px; color: #f5d97a; font-weight: 700; white-space: nowrap; }
+
+  /* Traditional Highlight */
+  .traditional { background: rgba(180, 140, 40, 0.1); border: 1px solid #8b6914; padding: 10px; border-radius: 5px; }
+  
+  footer { text-align: center; border-top: 1px solid #8b6914; margin-top: 30px; padding-top: 20px; }
+  .contact { font-size: 22px; color: #f5d97a; font-family: 'Cinzel', serif; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <header>
+    <div class="brand">MANA</div>
+    <div class="tagline">Desi-licious Home Foods</div>
+    <div class="motto">Taste of Tradition — Made with Love</div>
+  </header>
+
+  <div class="menu-grid">
+    <div class="section">
+      <div class="category-pill"><span class="qty">10 Pcs</span><span class="category-name">Pootarekulu</span></div>
+      <div class="item"><span class="item-name">Bellam</span><span class="price">₹200</span></div>
+      <div class="item"><span class="item-name">Sugar</span><span class="price">₹180</span></div>
+      <div class="item"><span class="item-name">Dryfruit</span><span class="price">₹250</span></div>
+      <div class="item"><span class="item-name">Horlicks</span><span class="price">₹250</span></div>
+      <div class="item"><span class="item-name">Oreo</span><span class="price">₹250</span></div>
+      <div class="item"><span class="item-name">Chocolate</span><span class="price">₹250</span></div>
+      <div class="item"><span class="item-name">Pineapple</span><span class="price">₹250</span></div>
+      <div class="item"><span class="item-name">Strawberry</span><span class="price">₹250</span></div>
+      <div class="item"><span class="item-name">Orange</span><span class="price">₹250</span></div>
+      <div class="item"><span class="item-name">Vanilla</span><span class="price">₹250</span></div>
+      <div class="item"><span class="item-name">Butterscotch</span><span class="price">₹250</span></div>
+    </div>
+
+    <div class="section">
+      <div class="category-pill"><span class="qty">250 Gms</span><span class="category-name">Laddus</span></div>
+      <div class="item"><span class="item-name">Sesame</span><span class="price">₹190</span></div>
+      <div class="item"><span class="item-name">Dryfruit</span><span class="price">₹300</span></div>
+      <div class="item"><span class="item-name">Ragi</span><span class="price">₹200</span></div>
+      <div class="item"><span class="item-name">Ravva</span><span class="price">₹160</span></div>
+      <div class="item"><span class="item-name">Coconut</span><span class="price">₹170</span></div>
+      <div class="item"><span class="item-name">Groundnut</span><span class="price">₹170</span></div>
+      <div class="item"><span class="item-name">Gond</span><span class="price">₹200</span></div>
+      <div class="item"><span class="item-name">Boondi</span><span class="price">₹150</span></div>
+    </div>
+
+    <div class="section">
+      <div class="category-pill"><span class="qty">250 Gms</span><span class="category-name">Chikkis</span></div>
+      <div class="item"><span class="item-name">Sesame</span><span class="price">₹180</span></div>
+      <div class="item"><span class="item-name">Groundnut</span><span class="price">₹150</span></div>
+      
+      <div class="traditional" style="margin-top: 20px;">
+        <div class="category-pill" style="background: transparent; color: #f5d97a; border: 1px solid #f5d97a;">
+          <span class="qty">250 Gms</span><span class="category-name">Traditional</span>
+        </div>
+        <div class="item"><span class="item-name">Ariselu</span><span class="price">₹200</span></div>
+        <div class="item"><span class="item-name">Kajjikayalu</span><span class="price">₹160</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="category-pill"><span class="qty">250 Gms</span><span class="category-name">Summundalu</span></div>
+      <div class="item"><span class="item-name">Bellam</span><span class="price">₹190</span></div>
+      <div class="item"><span class="item-name">Sugar</span><span class="price">₹180</span></div>
+    </div>
+  </div>
+
+  <div class="menu-grid" style="margin-top: 30px;">
+    <div class="section"><div class="category-pill"><span class="category-name">Savouries</span></div>
+      <div class="item"><span class="item-name">Jantikalu</span><span class="price">₹150</span></div>
+      <div class="item"><span class="item-name">Chekka Carelu</span><span class="price">₹180</span></div>
+    </div>
+    <div class="section"><div class="category-pill"><span class="category-name">Pickles</span></div>
+      <div class="item"><span class="item-name">Tomato</span><span class="price">₹130</span></div>
+      <div class="item"><span class="item-name">Mango Avakai</span><span class="price">₹130</span></div>
+    </div>
+    <div class="section"><div class="category-pill"><span class="category-name">Powders</span></div>
+      <div class="item"><span class="item-name">Rasam</span><span class="price">₹60</span></div>
+      <div class="item"><span class="item-name">Curry Leaves</span><span class="price">₹60</span></div>
+    </div>
+    <div class="section"><div class="category-pill"><span class="category-name">Papads</span></div>
+      <div class="item"><span class="item-name">Raagi</span><span class="price">₹90</span></div>
+      <div class="item"><span class="item-name">Rice Flour</span><span class="price">₹60</span></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Home Made — No Preservatives — No Colors — Only Flavours</p>
+    <div class="contact">WhatsApp: <span>9945060993</span></div>
+  </footer>
+</div>
+</body>
+</html>

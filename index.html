@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emberleaf Tea Co. — Enchanted Leaves of Eternity</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=MedievalSharp&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="#" onclick="showPage('home')">
+        <span class="logo-icon">&#9762;</span>
+        <span class="logo-text">Emberleaf</span>
+        <span class="logo-sub">Tea Co.</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#" onclick="showPage('home')">The Keep</a></li>
+        <li><a href="#" onclick="showPage('shop')">The Vault</a></li>
+        <li><a href="#" onclick="showPage('about')">The Scroll</a></li>
+        <li class="cart-link" onclick="showPage('cart')">
+          <a href="#"><span class="cart-icon">&#128722;</span> <span id="cart-count">0</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HOME PAGE ===== -->
+  <div id="page-home" class="page active">
+
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-particles" id="particles"></div>
+      <div class="hero-content">
+        <p class="hero-ornament">&#10053; &#9762; &#10053;</p>
+        <h1 class="hero-title">Brew the <em>Enchanted</em> Leaves</h1>
+        <p class="hero-sub">From the ancient groves of forgotten realms, each sip unveils a tale older than time. <strong>Emberleaf Tea Co.</strong> invites thee to partake in elixirs of wonder, distilled from nature's most sacred foliage.</p>
+        <a class="hero-cta" href="#" onclick="showPage('shop')">Enter the Vault &rarr;</a>
+        <p class="hero-tagline">&mdash; Where every cup is a spell unto itself &mdash;</p>
+      </div>
+    </section>
+
+    <section class="featured">
+      <h2 class="section-title">Chosen Elixirs</h2>
+      <p class="section-sub">Three rare blends hand‑selected by our alchemists</p>
+      <div class="product-row" id="featured-row"></div>
+    </section>
+
+    <section class="story-banner">
+      <div class="story-banner-inner">
+        <h2>A Legacy Brewed in Starlight</h2>
+        <p>Since the age of whispering merchants on the Silk Road, our ancestors have guarded the <strong>Sacred Leaf Codex</strong> &mdash; a grimoire of every tea ever known to humankind. Today, Emberleaf carries the flame, sourcing from the same hidden gardens, hand‑picked at dawn by those who know the language of the mist.</p>
+      </div>
+    </section>
+
+    <section class="pillars">
+      <div class="pillar">
+        <span class="pillar-icon">&mdash;</span>
+        <h3>Ethereal Sourcing</h3>
+        <p>Sourced from hidden valley estates at 6,000 feet, where clouds kiss the canopy. Each leaf chosen under moonlight for peak potency.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">&#128302;</span>
+        <h3>Alchemical Craft</h3>
+        <p>Oxidised, rolled, and roasted by hands that have known no trade but the leaf. Our methods, guarded for seven centuries.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">&#10053;</span>
+        <h3>Conscious Pact</h3>
+        <p>Biodegradable vessels, fair coin for every farmer, and a vow to leave the earth more enchanted than we found it.</p>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <h2>Begin Thy Journey</h2>
+      <p>Every great quest starts with a single cup.</p>
+      <a class="hero-cta" href="#" onclick="showPage('shop')">Browse the Vault</a>
+    </section>
+  </div>
+
+  <!-- ===== SHOP PAGE ===== -->
+  <div id="page-shop" class="page">
+    <div class="shop-header">
+      <h1>The Vault of Leaves</h1>
+      <p>Choose thy draught. Each potion has been aged, tested, and blessed.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCategory('all', this)">All Elixirs</button>
+      <button class="filter-btn" onclick="filterCategory('black', this)">Black</button>
+      <button class="filter-btn" onclick="filterCategory('green', this)">Green</button>
+      <button class="filter-btn" onclick="filterCategory('white', this)">White</button>
+      <button class="filter-btn" onclick="filterCategory('oolong', this)">Oolong</button>
+      <button class="filter-btn" onclick="filterCategory('herbal', this)">Herbal</button>
+      <button class="filter-btn" onclick="filterCategory('blend', this)">Enchanted Blends</button>
+    </div>
+
+    <div class="product-grid" id="product-grid"></div>
+  </div>
+
+  <!-- ===== ABOUT PAGE ===== -->
+  <div id="page-about" class="page">
+    <div class="about-container">
+      <h1>The Scroll of Emberleaf</h1>
+      <p class="about-lead">Our chronicle, sealed in steam and wax.</p>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h2>&#9762; Our Origins</h2>
+          <p>In the misty terraces of the Elder Mountains, a guild of leaf‑readers discovered that certain teas could transport the drinker to realms of wonder. Not by magic &mdash; but by the sheer beauty of flavor so rare, it bent the ordinary world for a moment. Emberleaf Tea Co. was born from that revelation.</p>
+        </div>
+        <div class="about-card">
+          <h2>&#9900; Our Craft</h2>
+          <p>Every blend is a ritual. Leaves are hand‑plucked before sunrise, withered in cedar chambers, rolled by artisans whose families have practiced the art for generations. We never rush what nature took patience to grow.</p>
+        </div>
+        <div class="about-card">
+          <h2>&#10026; Our Promise</h2>
+          <p>No machine ever touches our leaves. Every parcel is packed by hand, wrapped in enchanted parchment (biodegradable, naturally), and shipped with a handwritten note from the alchemist who crafted thy blend.</p>
+        </div>
+        <div class="about-card">
+          <h2>&#128142; The Guild Masters</h2>
+          <p><strong>Seraphina Moss</strong> &mdash; Grand Alchemist &amp; Founder<br>Once a botanist, always a mystic. Seraphina spends six months each year walking the high‑altitude estates of Assam, Uji, and the Wuyi Mountains, seeking the next legendary leaf.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CART PAGE ===== -->
+  <div id="page-cart" class="page">
+    <div class="cart-container">
+      <h1>Thy Satchel</h1>
+      <p class="cart-lead">Review thy chosen elixirs before the final covenant.</p>
+      <div id="cart-items"></div>
+      <div id="cart-summary"></div>
+      <div id="cart-empty" class="cart-empty hidden">
+        <p>&#9762;</p>
+        <h2>Thy satchel is empty</h2>
+        <a href="#" onclick="showPage('shop')" class="hero-cta">Visit the Vault</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CHECKOUT PAGE ===== -->
+  <div id="page-checkout" class="page">
+    <div class="checkout-container">
+      <h1>The Final Covenant</h1>
+      <p class="checkout-lead">Seal the pact and await thy delivery by raven.</p>
+      <form id="checkout-form" onsubmit="handleCheckout(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="fname" required placeholder="Sir Lancelot of Tea">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="femail" required placeholder="knight@emberleaf.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Address — Street &amp; Realm</label>
+          <input type="text" id="faddress" required placeholder="42 Willow Lane, Elderwood">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" id="fcity" required placeholder="Camelot">
+          </div>
+          <div class="form-group">
+            <label>Postal Sigil (Zip)</label>
+            <input type="text" id="fzip" required placeholder="10001">
+          </div>
+          <div class="form-group">
+            <label>Kingdom (Country)</label>
+            <input type="text" id="fcountry" required placeholder="England">
+          </div>
+        </div>
+
+        <h2>Payment Scroll</h2>
+        <div class="form-group">
+          <label>Card Number</label>
+          <input type="text" id="fcard" required placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCard(this)">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Expiry</label>
+            <input type="text" id="fexpiry" required placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
+          </div>
+          <div class="form-group">
+            <label>Arcane Sigil (CVV)</label>
+            <input type="text" id="fcvv" required placeholder="123" maxlength="4">
+          </div>
+        </div>
+
+        <div id="checkout-summary" class="checkout-summary"></div>
+
+        <button type="submit" class="pay-btn">&#9762; Bind the Covenant &mdash; Pay Now</button>
+        <p class="pay-note">&mdash; All transactions sealed with an arcane cipher (SSL) &mdash;</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== ORDER CONFIRMATION ===== -->
+  <div id="page-confirm" class="page">
+    <div class="confirm-container">
+      <div class="confirm-box">
+        <h1>&#10026; The Covenant is Sealed</h1>
+        <p class="confirm-msg">Thy elixirs have been dispatched upon the winds. Expect delivery within 3&ndash;7 sunrises.</p>
+        <p class="confirm-order" id="confirm-order"></p>
+        <a href="#" onclick="showPage('home')" class="hero-cta">Return to the Keep</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">Emberleaf</span> Tea Co.<br>
+        <small>From the ancient groves to thy cup.</small>
+      </div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('home')">The Keep</a>
+        <a href="#" onclick="showPage('shop')">The Vault</a>
+        <a href="#" onclick="showPage('about')">The Scroll</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Emberleaf Tea Co. All spells reserved.</p>
+    </div>
+  </footer>
+
+  <!-- PRODUCT MODAL -->
+  <div id="product-modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

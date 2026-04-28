@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(D:/apache-maven-3.9.6/bin/mvn clean:*)",
+      "Bash(D:/apache-maven-3.9.6/bin/mvn spring-boot:run)"
+    ]
+  }
+}

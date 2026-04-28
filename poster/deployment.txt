@@ -1,0 +1,111 @@
+
+Your Stack
+Piece	Tech	Hosting requirement
+Frontend	React + Vite	Static file host
+Backend	Spring Boot (Java)	JVM server, ~256–512MB RAM
+Database	H2 (in-memory)	Must migrate — H2 resets on every restart
+Critical: H2 is an in-memory database — all data (users, products, orders) is wiped every time the server restarts. Before deploying, you must switch to PostgreSQL. All free/cheap hosts below include free PostgreSQL.
+
+Option 1 — Completely Free
+Vercel (frontend) + Render (backend) + Supabase (database)
+
+Cost: $0/month
+Catch: Render free tier "spins down" after 15 min of inactivity — first request takes ~30 seconds to wake up.
+Step 1 — Migrate database from H2 to PostgreSQL
+1a. Add PostgreSQL driver to backend/pom.xml — replace the H2 dependency:
+
+
+<!-- Remove this: -->
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>runtime</scope>
+</dependency>
+
+<!-- Add this: -->
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+</dependency>
+1b. Update backend/src/main/resources/application.properties (create it if it doesn't exist):
+
+
+spring.datasource.url=${DATABASE_URL}
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+Step 2 — Get a free PostgreSQL database on Supabase
+Go to supabase.com → Sign up (free)
+Click New Project → give it a name → set a database password → choose the Singapore or US East region
+Wait ~2 minutes for it to provision
+Go to Project Settings → Database
+Scroll to Connection string → URI → copy the URI that looks like:
+
+postgresql://postgres:[YOUR-PASSWORD]@db.xxxxxxxxxxxx.supabase.co:5432/postgres
+Save this — it's your DATABASE_URL
+Step 3 — Deploy backend to Render
+Push your project to GitHub (github.com → New repository → push d:/ClaudeProject)
+
+
+cd d:/ClaudeProject
+git remote add origin https://github.com/YOUR_USERNAME/chai-and-leaf.git
+git push -u origin master
+Go to render.com → Sign up with GitHub (free)
+
+Click New → Web Service → Connect your GitHub repo
+
+Configure:
+
+Setting	Value
+Name	chai-and-leaf-backend
+Root Directory	backend
+Runtime	Java
+Build Command	D:/apache-maven-3.9.6/bin/mvn clean package -DskipTests → change to ./mvnw clean package -DskipTests
+Start Command	java -jar target/emberleaf-tea-co-1.0.0.jar
+Instance Type	Free
+Add environment variable:
+
+Key	Value
+DATABASE_URL	(paste the Supabase URI from Step 2)
+Click Create Web Service → wait ~5 minutes for first deploy
+
+Your backend URL will be: https://chai-and-leaf-backend.onrender.com
+
+Step 4 — Update frontend API URL
+In frontend/src/api/axios.js, change:
+
+
+baseURL: '/api',
+To:
+
+
+baseURL: import.meta.env.VITE_API_URL || '/api',
+Create frontend/.env.production:
+
+
+VITE_API_URL=https://chai-and-leaf-backend.onrender.com/api
+Also update CORS in AuthController.java — change every @CrossOrigin to:
+
+
+@CrossOrigin(origins = {"http://localhost:5173", "https://chai-and-leaf.vercel.app"})
+Step 5 — Deploy frontend to Vercel
+Go to vercel.com → Sign up with GitHub (free)
+
+Click Add New Project → Import your GitHub repo
+
+Configure:
+
+Setting	Value
+Root Directory	frontend
+Framework Preset	Vite
+Build Command	npm run build
+Output Directory	dist
+Add environment variable:
+
+Key	Value
+VITE_API_URL	https://chai-and-leaf-backend.onrender.com/api
+VITE_GOOGLE_CLIENT_ID	your Google OAuth client ID
+Click Deploy → done in ~2 minutes
+
+Your site: https://chai-and-leaf.vercel.app
