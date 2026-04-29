@@ -1,5 +1,6 @@
 package com.chaiandleaf.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,10 +14,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5173")
 public class ImageUploadController {
 
-    private static final String UPLOAD_DIR = "D:/ClaudeProject/backend/uploads/";
+    @Value("${app.upload.dir:uploads/}")
+    private String uploadDir;
 
     @PostMapping("/upload")
     public ResponseEntity<Map<String, String>> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
@@ -26,8 +27,10 @@ public class ImageUploadController {
             extension = originalName.substring(originalName.lastIndexOf("."));
         }
         String fileName = UUID.randomUUID().toString() + extension;
-        Path path = Paths.get(UPLOAD_DIR + fileName);
-        Files.write(path, file.getBytes());
+        String dir = uploadDir.endsWith("/") ? uploadDir : uploadDir + "/";
+        Path uploadPath = Paths.get(dir);
+        Files.createDirectories(uploadPath);
+        Files.write(uploadPath.resolve(fileName), file.getBytes());
         return ResponseEntity.ok(Map.of("url", "/uploads/" + fileName));
     }
 }
