@@ -10,6 +10,8 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 COPY --from=build /app/target/app.jar app.jar
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
 RUN mkdir -p uploads
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["./entrypoint.sh"]
