@@ -11,6 +11,6 @@ FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 COPY --from=build /app/target/app.jar app.jar
 COPY entrypoint.sh entrypoint.sh
-RUN chmod +x entrypoint.sh && mkdir -p uploads
+RUN sed -i 's/\r$//' entrypoint.sh && chmod +x entrypoint.sh && mkdir -p uploads
 EXPOSE 8080
 ENTRYPOINT ["./entrypoint.sh"]
