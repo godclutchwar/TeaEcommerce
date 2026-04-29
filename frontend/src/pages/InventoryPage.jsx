@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from '../api/axios';
+import api, { BASE_URL } from '../api/axios';
 import axios from 'axios';
 
 const CATEGORIES = ['black', 'green', 'white', 'herbal', 'oolong', 'blend'];
@@ -99,7 +99,7 @@ export default function InventoryPage() {
     try {
       const formData = new FormData();
       formData.append('file', file);
-      const res = await axios.post(`${'/api'}/upload`, formData, {
+      const res = await api.post('/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setForm((prev) => ({ ...prev, [field]: res.data.url }));
@@ -136,10 +136,22 @@ export default function InventoryPage() {
             {products.map((p) => (
               <tr key={p.id}>
                 <td className="inv-cell-thumb">
-                  {p.imageUrl ? <img src={p.imageUrl} alt={p.name} className="inv-thumb" /> : <span>{p.iconUnicode || '🍵'}</span>}
+                  {p.imageUrl ? (
+                    <img 
+                      src={p.imageUrl.startsWith('http') ? p.imageUrl : `${BASE_URL}${p.imageUrl}`} 
+                      alt={p.name} 
+                      className="inv-thumb" 
+                    />
+                  ) : <span>{p.iconUnicode || '🍵'}</span>}
                 </td>
                 <td className="inv-cell-thumb">
-                  {p.logoUrl ? <img src={p.logoUrl} alt="logo" className="inv-thumb" /> : '—'}
+                  {p.logoUrl ? (
+                    <img 
+                      src={p.logoUrl.startsWith('http') ? p.logoUrl : `${BASE_URL}${p.logoUrl}`} 
+                      alt="logo" 
+                      className="inv-thumb" 
+                    />
+                  ) : '—'}
                 </td>
                 <td className="inv-cell-name">{p.name}</td>
                 <td>{p.category}</td>

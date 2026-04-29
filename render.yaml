@@ -1,0 +1,27 @@
+services:
+  # Backend Service
+  - type: web
+    name: chaiandleaf-backend
+    env: docker
+    dockerContext: backend
+    dockerfilePath: backend/Dockerfile
+    plan: free
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: tea-ecommerce-db
+          property: connectionString
+      - key: ALLOWED_ORIGINS
+        value: https://chaiandleaf.vercel.app
+      - key: APP_FRONTEND_URL
+        value: https://chaiandleaf.vercel.app
+      - key: JWT_SECRET
+        generateValue: true
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+
+databases:
+  - name: tea-ecommerce-db
+    plan: free

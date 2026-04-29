@@ -1,0 +1,22 @@
+services:
+  chaiandleaf-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:chaiandleaf
+      - ALLOWED_ORIGINS=http://localhost:80
+      - APP_FRONTEND_URL=http://localhost:80
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  chaiandleaf-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - chaiandleaf-backend

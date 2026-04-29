@@ -1,8 +1,8 @@
-package com.emberleaf.service;
+package com.chaiandleaf.service;
 
-import com.emberleaf.entity.Role;
-import com.emberleaf.entity.User;
-import com.emberleaf.repository.UserRepository;
+import com.chaiandleaf.entity.Role;
+import com.chaiandleaf.entity.User;
+import com.chaiandleaf.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,12 +21,14 @@ class UserServiceTest {
 
     @Mock UserRepository userRepository;
     @Mock PasswordEncoder passwordEncoder;
+    @Mock com.chaiandleaf.util.JwtUtil jwtUtil;
+    @Mock EmailService emailService;
 
     private UserService userService;
 
     @BeforeEach
     void setUp() {
-        userService = new UserService(userRepository, passwordEncoder, null);
+        userService = new UserService(userRepository, passwordEncoder, jwtUtil, emailService);
     }
 
     @Test

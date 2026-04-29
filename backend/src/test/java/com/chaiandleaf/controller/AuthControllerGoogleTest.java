@@ -1,10 +1,10 @@
-package com.emberleaf.controller;
+package com.chaiandleaf.controller;
 
-import com.emberleaf.entity.Role;
-import com.emberleaf.entity.User;
-import com.emberleaf.repository.UserRepository;
-import com.emberleaf.service.GoogleTokenVerifier;
-import com.emberleaf.service.UserService;
+import com.chaiandleaf.entity.Role;
+import com.chaiandleaf.entity.User;
+import com.chaiandleaf.repository.UserRepository;
+import com.chaiandleaf.service.GoogleTokenVerifier;
+import com.chaiandleaf.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

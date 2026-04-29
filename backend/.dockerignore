@@ -1,0 +1,10 @@
+target/
+*.class
+.mvn/
+mvnw*
+.classpath
+.project
+.settings/
+.DS_Store
+uploads/
+backend.log

@@ -1,4 +1,4 @@
-package com.emberleaf.service;
+package com.chaiandleaf.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
