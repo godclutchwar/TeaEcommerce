@@ -36,7 +36,7 @@ public class OrderService {
     private String stripeSecretKey;
 
     public OrderService(OrderRepository orderRepository, ProductRepository productRepository,
-                        CartService cartService) {
+            CartService cartService) {
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;
         this.cartService = cartService;
@@ -83,6 +83,7 @@ public class OrderService {
 
             PaymentIntent paymentIntent = PaymentIntent.create(params);
             order.setStripePaymentIntentId(paymentIntent.getId());
+            order.setTotalAmount(totalCents);
 
             Order saved = orderRepository.save(order);
 
